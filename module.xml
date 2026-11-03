@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b">
+  <id>br.com.minebr55.compendium5e</id>
+  <version>1.9.0</version>
+  <info lang="pt-BR">
+    <name>Compendio 5e</name>
+    <description>Compendio independente de consulta para jogadores de D&amp;D 5e.</description>
+    <author>mineBR55</author>
+    <site>https://github.com/mineBR55</site>
+    <contact>GitHub: mineBR55</contact>
+  </info>
+  <settings>
+    <automaticStringLocalization>false</automaticStringLocalization>
+  </settings>
+</module>

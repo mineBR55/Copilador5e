@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCompendiumResultItem" height="54">
+    <rectangle align="client" color="#24272C"/>
+    <rectangle align="left" width="3" color="#C9A45C"/>
+    <label align="top" height="28" field="name" fontSize="14" fontStyle="bold" fontColor="#FFFFFF" margins="{left=8, top=4, right=8, bottom=0}"/>
+    <label align="client" field="meta" fontSize="11" fontColor="#B8BCC4" margins="{left=8, top=0, right=8, bottom=4}"/>
+</form>
