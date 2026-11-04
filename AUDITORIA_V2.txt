@@ -1,0 +1,16 @@
+AUDITORIA V2.0.0
+================
+Corrigido:
+- Encounter Builder 2024 e XP Budget completo.
+- Encontros aleatorios separados de tabelas genericas.
+- Intervalos 91-00 convertidos para 91-100.
+- Tabelas vazias nao entram no seletor.
+- Categorias sem registros exibem mensagem diagnostica.
+- Referencias permanecem acessiveis como categorias independentes.
+- Classes exibem o bloco SUBCLASSES gerado pelo importador.
+- Painel de imagem e ocultado quando imageRef esta vazio.
+
+Observacoes:
+- Os arquivos data/*.lua desta entrega sao placeholders regeneraveis porque os anexos grandes nao foram materializados no ambiente de arquivos.
+- Para popular todo o Compendio, execute atualizar_dados.bat ou importar.bat com a pasta data local do 5etools.
+- O importador ainda precisa de uma etapa futura de associacao completa aos fluff separados para ampliar cobertura de imagens.

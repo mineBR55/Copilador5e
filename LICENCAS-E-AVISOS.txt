@@ -1,0 +1,26 @@
+COMPENDIUM5E - LICENCAS E AVISOS
+
+1. Codigo do Compendium5e
+Defina uma licenca propria para o codigo deste plugin antes de distribui-lo publicamente.
+
+2. 5etools
+O atualizador obtem a distribuicao publica disponibilizada pelo projeto 5etools e usa seu
+formato de dados como fonte de importacao. O repositorio de codigo 5etools e publicado
+sob a MIT License. Ao redistribuir codigo do projeto ou porcoes substanciais abrangidas
+pela MIT, preserve o aviso de copyright e o texto da licenca correspondente.
+
+3. Conteudo de D&D e outros materiais
+A licenca MIT do software 5etools nao deve ser tratada como uma autorizacao automatica
+para redistribuir textos, imagens, marcas ou outros conteudos de terceiros presentes ou
+referenciados nos dados. O proprio 5etools declara que sua finalidade e servir como
+referencia digital para produtos que o usuario ja possui e orienta obedecer as leis locais.
+
+Por isso, a configuracao recomendada deste projeto e:
+- distribuir o codigo do plugin e o atualizador;
+- deixar o usuario executar a obtencao/importacao dos dados;
+- nao publicar um RPK contendo uma copia integral de conteudo de livros sem confirmar
+  separadamente os direitos/licencas aplicaveis a esse conteudo;
+- manter fonte/proveniencia nos registros importados;
+- preservar avisos de licenca aplicaveis ao codigo reutilizado.
+
+Isto e uma orientacao pratica de projeto, nao aconselhamento juridico.

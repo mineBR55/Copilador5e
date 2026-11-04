@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCompendium5e" formType="tablesDock" dataType="br.com.minebr55.compendium5e" title="Compendio 5e" width="1040" height="720">
+<script>
+local index=require("data/index.lua")
+local entries=require("data/entries.lua")
+local entriesChunkCache={}
+local function getEntry(id)
+ local n=entries.manifest and entries.manifest[id]
+ if not n then return entries[id] end
+ local part=entriesChunkCache[n]
+ if not part then local name=string.format("data/entries_%03d.lua",n); local ok,v=pcall(require,name); if not ok then return nil end; part=v; entriesChunkCache[n]=part end
+ return part[id]
+end
+local tables=require("data/tables.lua")
+local encounterTables=require("data/encounters.lua")
+local tableEngine=require("table_engine.lua")
+local encounterEngine=require("encounter_engine.lua")
+local activeCategory="creature"
+local filtered={}
+local page=1
+local pageSize=15
+local partyGroups={{qty=4,level=1}}
+local encounterMonsters={}
+local currentClassName=nil
+local subclassIds={}
+local function hidePanels()
+ self.pnlBrowser.visible=false; self.pnlTables.visible=false; self.pnlRandom.visible=false; self.pnlBuilder.visible=false
+end
+local function catLabel(c)
+ local t={spell="Magias",species="Especies",class="Classes",feat="Feats",item="Itens",magicitem="Itens Magicos",creature="Criaturas",condition="Regras",optionalfeature="Opcoes e Features",background="Backgrounds",charoption="Opcoes de Personagem",actionref="Acoes",reward="Recompensas",object="Objetos",traphazard="Armadilhas e Perigos",psionic="Psionicos",vehicle="Veiculos"}
+ return t[c] or c
+end
+local function renderRows()
+ for i=1,15 do local b=self["res"..i]; local pos=(page-1)*pageSize+i; local e=filtered[pos]; b.visible=e~=nil; if e then b.text=(e.name or "Sem nome").." ["..(e.source or "?").."]"; b.tag=e.id end end
+ self.lblPage.text="Pagina "..page.." / "..math.max(1,math.ceil(#filtered/pageSize)); self.lblCount.text=#filtered.." resultado(s)"
+end
+local function searchNow()
+ filtered={}; local q=string.lower(self.edtSearch.text or ""); local ed=self.cmbEdition.value or "all"
+ for _,e in ipairs(index) do if e.category==activeCategory and (ed=="all" or e.edition==ed) and (q=="" or string.find(string.lower(e.name or ""),q,1,true)) then table.insert(filtered,e) end end
+ page=1; renderRows(); self.txtDetails.text=(#filtered==0) and "Nenhum conteudo importado para esta categoria. Execute atualizar_dados.bat ou use uma fonte local autorizada." or "Selecione um resultado."
+end
+local function chooseCategory(c)
+ hidePanels(); self.pnlBrowser.visible=true; activeCategory=c; currentClassName=nil; self.pnlSubclass.visible=false; self.lblSection.text=catLabel(c); self.pnlImage.visible=false; self.edtSearch.text=""; searchNow()
+end
+local function showEntry(id)
+ local d=getEntry(id); if not d then self.txtDetails.text="Detalhes nao importados para este registro."; self.pnlImage.visible=false; return end
+ self.txtDetails.text=(d.title or "").."\n"..(d.subtitle or "").."\n\n"..(d.body or "Sem detalhes.")
+ local img=""; for _,e in ipairs(index) do if e.id==id then img=e.imageRef or ""; break end end
+ self.pnlImage.visible=img~=""; if img~="" then self.imgEntry.url=img end
+end
+local function populateSubclasses(className)
+ local names={"Visao geral da classe"}; local values={"__class__"}; subclassIds={}
+ local wanted=string.lower(className or "")
+ for _,e in ipairs(index) do
+  if e.category=="subclass" then
+   local parent=string.lower(e.parentClass or "")
+   if parent==wanted then table.insert(names,(e.name or "Subclasse").." ["..(e.source or "?").."]"); table.insert(values,e.id); subclassIds[e.id]=true end
+  end
+ end
+ self.cmbSubclass.items=names; self.cmbSubclass.values=values; self.cmbSubclass.value="__class__"; self.cmbSubclass.enabled=#names>1; self.pnlSubclass.visible=true
+ if #names==1 then self.lblSubclassHint.text="Nenhuma subclasse importada para esta classe." else self.lblSubclassHint.text=(#names-1).." subclasse(s) disponivel(is)." end
+end
+local function openResult(id)
+ local meta=nil; for _,e in ipairs(index) do if e.id==id then meta=e; break end end
+ if meta and meta.category=="class" then currentClassName=meta.name; self.classEntryId=id; populateSubclasses(meta.name) else self.pnlSubclass.visible=false end
+ showEntry(id)
+end
+local function openSubclass()
+ local v=self.cmbSubclass.value or "__class__"; if v=="__class__" then if self.classEntryId then showEntry(self.classEntryId) end else showEntry(v) end
+end
+local function updateTableSelectors()
+ local names={}; for i,t in ipairs(tables) do if t.rows and #t.rows>0 then table.insert(names,t.name.." ["..(t.source or "?").."]") end end; self.cmbTable.items=names; self.cmbTable.value=names[1]
+ local ens={}; for i,t in ipairs(encounterTables) do if t.rows and #t.rows>0 then table.insert(ens,t.name.." ["..(t.source or "?").."]") end end; self.cmbEncounter.items=ens; self.cmbEncounter.value=ens[1]
+end
+local function selectedByLabel(data,label)
+ for _,t in ipairs(data) do if t.name.." ["..(t.source or "?").."]"==label then return t end end
+end
+local function rollSelected(data,combo,out)
+ local t=selectedByLabel(data,combo.value or ""); if not t then out.text="Nenhuma tabela valida importada."; return end
+ local r=tableEngine.roll(t.dice or "1d100"); local row=tableEngine.select(t.rows,r); out.text=(row and ("Rolagem: "..r.."\n"..tableEngine.format(row.result))) or ("Rolagem "..r.." sem faixa correspondente. Reimporte os dados com o validador atualizado.")
+end
+local function updateBuilder()
+ local r=encounterEngine.evaluate(partyGroups,encounterMonsters); local lines={"ORCAMENTO DO GRUPO","Baixo: "..r.budget[1].." XP","Moderado: "..r.budget[2].." XP","Alto: "..r.budget[3].." XP","","CRIATURAS"}
+ for _,m in ipairs(encounterMonsters) do table.insert(lines,(m.qty or 0).." x "..(m.name or "Criatura").." ("..(m.xp or 0).." XP cada)") end
+ table.insert(lines,""); table.insert(lines,"XP total: "..r.xp); table.insert(lines,"Dificuldade: "..r.difficulty); table.insert(lines,"Saldo ate Alto: "..r.remainingHigh.." XP"); self.txtBuilder.text=table.concat(lines,"\n")
+end
+local function addParty()
+ local q=math.max(1,tonumber(self.edtPartyQty.text) or 1); local l=math.max(1,math.min(20,tonumber(self.edtPartyLevel.text) or 1)); table.insert(partyGroups,{qty=q,level=l}); updateBuilder()
+end
+local function addMonster()
+ local cr=self.cmbMonsterCR.value or "0"; local xp=encounterEngine.crXP[cr] or 0; local q=math.max(1,tonumber(self.edtMonsterQty.text) or 1); local name=self.edtMonsterName.text; if name=="" then name="CR "..cr end; table.insert(encounterMonsters,{name=name,qty=q,xp=xp,cr=cr}); updateBuilder()
+end
+local function clearBuilder() partyGroups={}; encounterMonsters={}; updateBuilder() end
+local function init()
+ updateTableSelectors(); chooseCategory("creature"); updateBuilder()
+end
+</script>
+<rectangle align="client" color="#17191C"/>
+<layout align="top" height="38" margins="{left=6,top=6,right=6,bottom=0}">
+ <button align="left" width="70" text="Magias"><event name="onClick">chooseCategory("spell")</event></button><button align="left" width="75" text="Especies"><event name="onClick">chooseCategory("species")</event></button><button align="left" width="70" text="Classes"><event name="onClick">chooseCategory("class")</event></button><button align="left" width="60" text="Feats"><event name="onClick">chooseCategory("feat")</event></button><button align="left" width="60" text="Itens"><event name="onClick">chooseCategory("item")</event></button><button align="left" width="95" text="Itens Magicos"><event name="onClick">chooseCategory("magicitem")</event></button><button align="left" width="82" text="Criaturas"><event name="onClick">chooseCategory("creature")</event></button><button align="left" width="65" text="Regras"><event name="onClick">chooseCategory("condition")</event></button>
+</layout>
+<layout align="top" height="36" margins="{left=6,top=2,right=6,bottom=0}">
+ <label align="left" width="82" text="Referencias:" fontColor="#C9A45C"/><button align="left" width="115" text="Opcoes/Features"><event name="onClick">chooseCategory("optionalfeature")</event></button><button align="left" width="100" text="Backgrounds"><event name="onClick">chooseCategory("background")</event></button><button align="left" width="105" text="Personagem"><event name="onClick">chooseCategory("charoption")</event></button><button align="left" width="65" text="Acoes"><event name="onClick">chooseCategory("actionref")</event></button><button align="left" width="105" text="Recompensas"><event name="onClick">chooseCategory("reward")</event></button><button align="left" width="75" text="Objetos"><event name="onClick">chooseCategory("object")</event></button><button align="left" width="135" text="Perigos"><event name="onClick">chooseCategory("traphazard")</event></button><button align="left" width="85" text="Psionicos"><event name="onClick">chooseCategory("psionic")</event></button><button align="left" width="80" text="Veiculos"><event name="onClick">chooseCategory("vehicle")</event></button>
+</layout>
+<layout align="top" height="36" margins="{left=6,top=2,right=6,bottom=0}">
+ <label align="left" width="82" text="Ferramentas:" fontColor="#C9A45C"/><button align="left" width="95" text="Tabelas"><event name="onClick">hidePanels(); self.pnlTables.visible=true</event></button><button align="left" width="145" text="Encontros Aleatorios"><event name="onClick">hidePanels(); self.pnlRandom.visible=true</event></button><button align="left" width="175" text="Encounter Builder 2024"><event name="onClick">hidePanels(); self.pnlBuilder.visible=true; updateBuilder()</event></button>
+</layout>
+<layout name="pnlBrowser" align="client" visible="true" margins="{left=6,top=4,right=6,bottom=6}">
+ <layout align="top" height="34"><label name="lblSection" align="left" width="160" text="Compendio" fontColor="#C9A45C" fontStyle="bold"/><edit name="edtSearch" align="left" width="260" hint="Buscar"/><button align="left" width="70" text="Buscar"><event name="onClick">searchNow()</event></button><comboBox name="cmbEdition" align="left" width="105" items="{'Todas', '2014', '2024'}" values="{'all', '2014', '2024'}" value="all"><event name="onChange">searchNow()</event></comboBox><label name="lblCount" align="client" text=""/></layout>
+ <layout align="left" width="370"><layout align="client">
+  <button name="res1" align="top" height="30" visible="false"><event name="onClick">openResult(self.res1.tag)</event></button>
+  <button name="res2" align="top" height="30" visible="false"><event name="onClick">openResult(self.res2.tag)</event></button>
+  <button name="res3" align="top" height="30" visible="false"><event name="onClick">openResult(self.res3.tag)</event></button>
+  <button name="res4" align="top" height="30" visible="false"><event name="onClick">openResult(self.res4.tag)</event></button>
+  <button name="res5" align="top" height="30" visible="false"><event name="onClick">openResult(self.res5.tag)</event></button>
+  <button name="res6" align="top" height="30" visible="false"><event name="onClick">openResult(self.res6.tag)</event></button>
+  <button name="res7" align="top" height="30" visible="false"><event name="onClick">openResult(self.res7.tag)</event></button>
+  <button name="res8" align="top" height="30" visible="false"><event name="onClick">openResult(self.res8.tag)</event></button>
+  <button name="res9" align="top" height="30" visible="false"><event name="onClick">openResult(self.res9.tag)</event></button>
+  <button name="res10" align="top" height="30" visible="false"><event name="onClick">openResult(self.res10.tag)</event></button>
+  <button name="res11" align="top" height="30" visible="false"><event name="onClick">openResult(self.res11.tag)</event></button>
+  <button name="res12" align="top" height="30" visible="false"><event name="onClick">openResult(self.res12.tag)</event></button>
+  <button name="res13" align="top" height="30" visible="false"><event name="onClick">openResult(self.res13.tag)</event></button>
+  <button name="res14" align="top" height="30" visible="false"><event name="onClick">openResult(self.res14.tag)</event></button>
+  <button name="res15" align="top" height="30" visible="false"><event name="onClick">openResult(self.res15.tag)</event></button>
+  <layout align="bottom" height="34"><button align="left" width="80" text="Anterior"><event name="onClick">if page&gt;1 then page=page-1; renderRows() end</event></button><label name="lblPage" align="client" text="Pagina 1" horzTextAlign="center"/><button align="right" width="80" text="Proxima"><event name="onClick">if page*pageSize&lt;#filtered then page=page+1; renderRows() end</event></button></layout>
+ </layout></layout>
+ <layout align="client" margins="{left=8,top=0,right=0,bottom=0}"><layout name="pnlSubclass" align="top" height="38" visible="false"><label align="left" width="90" text="Subclasse:" fontColor="#C9A45C"/><comboBox name="cmbSubclass" align="left" width="360"><event name="onChange">openSubclass()</event></comboBox><label name="lblSubclassHint" align="client" text=""/></layout><layout name="pnlImage" align="top" height="220" visible="false"><image name="imgEntry" align="client" showStyle="proportional"/></layout><textEditor name="txtDetails" align="client" readOnly="true" field=""/></layout>
+</layout>
+<layout name="pnlTables" align="client" visible="false" margins="{left=10,top=8,right=10,bottom=10}"><layout align="top" height="36"><comboBox name="cmbTable" align="left" width="480"/><button align="left" width="90" text="Rolar"><event name="onClick">rollSelected(tables,self.cmbTable,self.txtTable)</event></button></layout><textEditor name="txtTable" align="client" readOnly="true" text="Selecione uma tabela valida."/></layout>
+<layout name="pnlRandom" align="client" visible="false" margins="{left=10,top=8,right=10,bottom=10}"><layout align="top" height="36"><comboBox name="cmbEncounter" align="left" width="480"/><button align="left" width="90" text="Rolar"><event name="onClick">rollSelected(encounterTables,self.cmbEncounter,self.txtEncounter)</event></button></layout><textEditor name="txtEncounter" align="client" readOnly="true" text="As tabelas de encontros sao importadas de encounters.json, separadas de tables.json."/></layout>
+<layout name="pnlBuilder" align="client" visible="false" margins="{left=10,top=8,right=10,bottom=10}"><layout align="top" height="36"><label align="left" width="55" text="Grupo:"/><edit name="edtPartyQty" align="left" width="55" text="4" hint="Qtd"/><edit name="edtPartyLevel" align="left" width="65" text="1" hint="Nivel"/><button align="left" width="115" text="Adicionar grupo"><event name="onClick">addParty()</event></button><button align="left" width="115" text="Limpar tudo"><event name="onClick">clearBuilder()</event></button></layout><layout align="top" height="36"><label align="left" width="55" text="Monstro:"/><edit name="edtMonsterName" align="left" width="220" hint="Nome"/><comboBox name="cmbMonsterCR" align="left" width="80" items="{'0','1/8','1/4','1/2','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20'}" value="0"/><edit name="edtMonsterQty" align="left" width="55" text="1" hint="Qtd"/><button align="left" width="130" text="Adicionar criatura"><event name="onClick">addMonster()</event></button></layout><textEditor name="txtBuilder" align="client" readOnly="true"/></layout>
+<event name="onShow">init()</event>
+</form>

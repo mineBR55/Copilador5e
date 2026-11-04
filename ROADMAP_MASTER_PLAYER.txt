@@ -1,0 +1,15 @@
+SUPORTE MESTRE + JOGADOR
+========================
+Implementado/infraestrutura:
+- Compendio pesquisavel, filtros, favoritos, areas, loot, crafting, tabelas, encontros, atributos e CR.
+- Referencias agora possuem entrada explicita e painel contextual.
+- Referencia Rapida 2024 abre o navegador de regras filtrado para 2024.
+- Importador passa a preservar imageRef quando o proprio JSON importado trouxer href/url/path de imagem.
+
+Proximas camadas planejadas (nao implementadas nesta versao):
+- Resolver fluff separado por UID para ampliar a cobertura de imageRef.
+- Renderizacao/cache local de imagens somente apos validar o componente de imagem e o formato aceito pelo Firecast.
+- Encounter Builder com regras 2024.
+- Combat/initiative tracker.
+- Criacao de personagem guiada e Point Buy interativo.
+- DM Screen personalizavel sobre regras importadas.

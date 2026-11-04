@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmResultItem" formType="undefined" dataType="br.com.minebr55.compendium5e.result" width="300" height="30"><button name="btnResult" align="client" text="Resultado"/></form>
