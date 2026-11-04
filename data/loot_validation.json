@@ -1,0 +1,345 @@
+{
+  "itemsIndexed": 200063,
+  "groupsIndexed": 119,
+  "variantsExpanded": 296340,
+  "groupsEmpty": [
+    "armor of resistance|dmg",
+    "armor of vulnerability|dmg",
+    "bag of tricks|dmg",
+    "belt of giant strength|dmg",
+    "carpet of flying|dmg",
+    "crystal ball (legendary version)|dmg",
+    "dragon scale mail|dmg",
+    "elemental gem|dmg",
+    "figurine of wondrous power|dmg",
+    "horn of valhalla|dmg",
+    "instrument of the bards|dmg",
+    "ioun stone|dmg",
+    "manual of golems|dmg",
+    "potion of giant strength|dmg",
+    "potion of resistance|dmg",
+    "potions of healing|dmg",
+    "quaal's feather token|dmg",
+    "ring of elemental command|dmg",
+    "ring of resistance|dmg",
+    "rod of the pact keeper|dmg",
+    "scroll of protection|dmg",
+    "spell scroll|dmg",
+    "sword of answering|dmg",
+    "wand of the war mage|dmg"
+  ],
+  "groupRefsMissing": [
+    {
+      "group": "armor of resistance|xdmg",
+      "ref": "armor of acid resistance|xdmg"
+    },
+    {
+      "group": "armor of resistance|xdmg",
+      "ref": "armor of cold resistance|xdmg"
+    },
+    {
+      "group": "armor of resistance|xdmg",
+      "ref": "armor of fire resistance|xdmg"
+    },
+    {
+      "group": "armor of resistance|xdmg",
+      "ref": "armor of force resistance|xdmg"
+    },
+    {
+      "group": "armor of resistance|xdmg",
+      "ref": "armor of lightning resistance|xdmg"
+    },
+    {
+      "group": "armor of resistance|xdmg",
+      "ref": "armor of necrotic resistance|xdmg"
+    },
+    {
+      "group": "armor of resistance|xdmg",
+      "ref": "armor of poison resistance|xdmg"
+    },
+    {
+      "group": "armor of resistance|xdmg",
+      "ref": "armor of psychic resistance|xdmg"
+    },
+    {
+      "group": "armor of resistance|xdmg",
+      "ref": "armor of radiant resistance|xdmg"
+    },
+    {
+      "group": "armor of resistance|xdmg",
+      "ref": "armor of thunder resistance|xdmg"
+    },
+    {
+      "group": "armor of resistance|xdmg",
+      "ref": "you have {@variantrule resistance|xphb} to one type of damage while you wear this armor. the dm chooses the type or determines it randomly by rolling on the following table."
+    },
+    {
+      "group": "armor of vulnerability|xdmg",
+      "ref": "armor of vulnerability (bludgeoning)|xdmg"
+    },
+    {
+      "group": "armor of vulnerability|xdmg",
+      "ref": "armor of vulnerability (piercing)|xdmg"
+    },
+    {
+      "group": "armor of vulnerability|xdmg",
+      "ref": "armor of vulnerability (slashing)|xdmg"
+    },
+    {
+      "group": "blade of the guardian|au",
+      "ref": "studious blade of the guardian|au"
+    },
+    {
+      "group": "blade of the guardian|au",
+      "ref": "resistant blade of the guardian|au"
+    },
+    {
+      "group": "blade of the guardian|au",
+      "ref": "all-seeing blade of the guardian|au"
+    },
+    {
+      "group": "blade of the guardian|au",
+      "ref": "weapon of warning|xdmg"
+    },
+    {
+      "group": "breastplate of the tyrant|au",
+      "ref": "regal breastplate of the tyrant|au"
+    },
+    {
+      "group": "breastplate of the tyrant|au",
+      "ref": "subjugating breastplate of the tyrant|au"
+    },
+    {
+      "group": "breastplate of the tyrant|au",
+      "ref": "breastplate of psychic resistance|xdmg"
+    },
+    {
+      "group": "carpet of flying|xdmg",
+      "ref": "you can make this carpet hover and fly by taking a {@action magic|xphb} action and using the carpet's command word. it moves according to your directions if you are within 30 feet of it."
+    },
+    {
+      "group": "carpet of flying|xdmg",
+      "ref": "four sizes of carpet of flying exist. the dm chooses the size of a given carpet or determines it randomly by rolling on the following table. a carpet can carry up to twice the weight shown on the table, but its {@variantrule fly speed|xphb} is halved if it carries more than its normal capacity."
+    },
+    {
+      "group": "dragon's wrath weapon|ftd",
+      "ref": "slumbering dragon's wrath weapon|ftd"
+    },
+    {
+      "group": "dragon's wrath weapon|ftd",
+      "ref": "stirring dragon's wrath weapon|ftd"
+    },
+    {
+      "group": "dragon's wrath weapon|ftd",
+      "ref": "wakened dragon's wrath weapon|ftd"
+    },
+    {
+      "group": "dragon's wrath weapon|ftd",
+      "ref": "ascendant dragon's wrath weapon|ftd"
+    },
+    {
+      "group": "enspelled armor|xdmg",
+      "ref": "enspelled armor (cantrip)|xdmg"
+    },
+    {
+      "group": "enspelled armor|xdmg",
+      "ref": "enspelled armor (level 1)|xdmg"
+    },
+    {
+      "group": "enspelled armor|xdmg",
+      "ref": "enspelled armor (level 2)|xdmg"
+    },
+    {
+      "group": "enspelled armor|xdmg",
+      "ref": "enspelled armor (level 3)|xdmg"
+    },
+    {
+      "group": "enspelled armor|xdmg",
+      "ref": "enspelled armor (level 4)|xdmg"
+    },
+    {
+      "group": "enspelled armor|xdmg",
+      "ref": "enspelled armor (level 5)|xdmg"
+    },
+    {
+      "group": "enspelled armor|xdmg",
+      "ref": "enspelled armor (level 6)|xdmg"
+    },
+    {
+      "group": "enspelled armor|xdmg",
+      "ref": "enspelled armor (level 7)|xdmg"
+    },
+    {
+      "group": "enspelled armor|xdmg",
+      "ref": "enspelled armor (level 8)|xdmg"
+    },
+    {
+      "group": "enspelled weapon|xdmg",
+      "ref": "enspelled weapon (cantrip)|xdmg"
+    },
+    {
+      "group": "enspelled weapon|xdmg",
+      "ref": "enspelled weapon (level 1)|xdmg"
+    },
+    {
+      "group": "enspelled weapon|xdmg",
+      "ref": "enspelled weapon (level 2)|xdmg"
+    },
+    {
+      "group": "enspelled weapon|xdmg",
+      "ref": "enspelled weapon (level 3)|xdmg"
+    },
+    {
+      "group": "enspelled weapon|xdmg",
+      "ref": "enspelled weapon (level 4)|xdmg"
+    },
+    {
+      "group": "enspelled weapon|xdmg",
+      "ref": "enspelled weapon (level 5)|xdmg"
+    },
+    {
+      "group": "enspelled weapon|xdmg",
+      "ref": "enspelled weapon (level 6)|xdmg"
+    },
+    {
+      "group": "enspelled weapon|xdmg",
+      "ref": "enspelled weapon (level 7)|xdmg"
+    },
+    {
+      "group": "enspelled weapon|xdmg",
+      "ref": "enspelled weapon (level 8)|xdmg"
+    },
+    {
+      "group": "eye and hand of vecna|dmg",
+      "ref": "{@creature orcus|mtf}, the demon prince of undeath, taught vecna a ritual that would allow him to live on as a {@creature lich}. beyond death, he became the greatest of all liches. even though his body gradually withered and decayed, vecna continued to expand his evil dominion. so formidable and hideous was his temper that his subjects feared to speak his name. he was the whispered one, the master of the spider throne, the undying king, and the lord of the rotted tower."
+    },
+    {
+      "group": "eye and hand of vecna|xdmg",
+      "ref": "{@book vecna|xdmg"
+    },
+    {
+      "group": "flensing claws|vgm",
+      "ref": "{@creature mind flayer|vgm"
+    },
+    {
+      "group": "horn of valhalla|xdmg",
+      "ref": "you can take a {@action magic|xphb} action to blow this horn. in response, warrior spirits from the plane of ysgard appear in unoccupied spaces within 60 feet of you. each spirit uses the {@creature berserker"
+    },
+    {
+      "group": "horn of valhalla|xdmg",
+      "ref": "if you meet the requirement, they are {@variantrule friendly [attitude]|xphb"
+    },
+    {
+      "group": "imbued wood focus|erlw",
+      "ref": "imbued wood (fernian ash)|erlw"
+    },
+    {
+      "group": "imbued wood focus|erlw",
+      "ref": "imbued wood (irian rosewood)|erlw"
+    },
+    {
+      "group": "imbued wood focus|erlw",
+      "ref": "imbued wood (kythrian manchineel)|erlw"
+    },
+    {
+      "group": "imbued wood focus|erlw",
+      "ref": "imbued wood (lamannian oak)|erlw"
+    },
+    {
+      "group": "imbued wood focus|erlw",
+      "ref": "imbued wood (mabaran ebony)|erlw"
+    },
+    {
+      "group": "imbued wood focus|erlw",
+      "ref": "imbued wood (risian pine)|erlw"
+    },
+    {
+      "group": "imbued wood focus|erlw",
+      "ref": "imbued wood (shavarran birch)|erlw"
+    },
+    {
+      "group": "imbued wood focus|erlw",
+      "ref": "imbued wood (xorian wenge)|erlw"
+    },
+    {
+      "group": "instrument of the bards|xdmg",
+      "ref": "all instrument of the bards can be used to cast the following spells: {@spell fly|xphb}, {@spell invisibility"
+    },
+    {
+      "group": "ioun stone|xdmg",
+      "ref": "{#itementry ioun stone|xdmg}"
+    },
+    {
+      "group": "mechanical wonder|fraif",
+      "ref": "a mechanical wonder is a dormant object until activated. to activate a mechanical wonder, you must wind the wonder with a handheld key unique to that wonder. it takes 1 minute to wind a mechanical wonder. while you wind it, you must take the {@action utilize|xphb} action each turn."
+    },
+    {
+      "group": "orb of shielding|erlw",
+      "ref": "orb of shielding (fernian basalt)|erlw"
+    },
+    {
+      "group": "orb of shielding|erlw",
+      "ref": "orb of shielding (irian quartz)|erlw"
+    },
+    {
+      "group": "orb of shielding|erlw",
+      "ref": "orb of shielding (kythrian skarn)|erlw"
+    },
+    {
+      "group": "orb of shielding|erlw",
+      "ref": "orb of shielding (lamannian flint)|erlw"
+    },
+    {
+      "group": "orb of shielding|erlw",
+      "ref": "orb of shielding (mabaran obsidian)|erlw"
+    },
+    {
+      "group": "orb of shielding|erlw",
+      "ref": "orb of shielding (risian shale)|erlw"
+    },
+    {
+      "group": "orb of shielding|erlw",
+      "ref": "orb of shielding (shavarran chert)|erlw"
+    },
+    {
+      "group": "orb of shielding|erlw",
+      "ref": "orb of shielding (xorian marble)|erlw"
+    },
+    {
+      "group": "potion of resistance|xdmg",
+      "ref": "when you drink this potion, you have {@variantrule resistance|xphb} to one type of damage for 1 hour. the dm chooses the type or determines it randomly by rolling on the following table."
+    },
+    {
+      "group": "ring of resistance|xdmg",
+      "ref": "you have {@variantrule resistance|xphb} to one damage type while wearing this ring. the gemstone in the ring indicates the type, which the dm chooses or determines randomly by rolling on the following table."
+    },
+    {
+      "group": "scroll of protection|xdmg",
+      "ref": "using a {@action magic|xphb} action to read the scroll creates a 5-foot emanation originating from you. for 5 minutes, creatures of the specified type can't enter or affect anything in the area. however, if you move in such a way that a creature of the specified type would be inside the area, the effect ends."
+    },
+    {
+      "group": "scroll of protection|xdmg",
+      "ref": "as a {@action magic|xphb} action, a creature within 5 feet of the emanation can attempt to overcome it, which forces the creature to make a {@dc 15} charisma saving throw. on a successful save, the creature ceases to be affected by the emanation."
+    },
+    {
+      "group": "scroll of titan summoning|xdmg",
+      "ref": "when you take a {@action magic|xphb} action to read this scroll, a particular titan named in the scroll appears in an unoccupied space on the ground or in water that you can see within 1 mile of yourself. the dm picks a suitable titan or determines it randomly by rolling on the table below."
+    },
+    {
+      "group": "scroll of titan summoning|xdmg",
+      "ref": "the titan is {@variantrule hostile [attitude]|xphb"
+    },
+    {
+      "group": "wave-swept weapon|au",
+      "ref": "barnacled wave-swept weapon|au"
+    },
+    {
+      "group": "wave-swept weapon|au",
+      "ref": "aquatic wave-swept weapon|au"
+    },
+    {
+      "group": "wave-swept weapon|au",
+      "ref": "ascendant wave-swept weapon|au"
+    }
+  ]
+}

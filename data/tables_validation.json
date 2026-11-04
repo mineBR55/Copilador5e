@@ -1,0 +1,353 @@
+{
+  "lootTables": [
+    {
+      "mode": "individual",
+      "name": "Challenge 0-4",
+      "source": "DMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "individual",
+      "name": "Challenge 5-10",
+      "source": "DMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "individual",
+      "name": "Challenge 11-16",
+      "source": "DMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "individual",
+      "name": "Challenge 17+",
+      "source": "DMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "individual",
+      "name": "Challenge 0-4",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "individual",
+      "name": "Challenge 5-10",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "individual",
+      "name": "Challenge 11-16",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "individual",
+      "name": "Challenge 17+",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "hoard",
+      "name": "Challenge 0-4",
+      "source": "DMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "hoard",
+      "name": "Challenge 5-10",
+      "source": "DMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "hoard",
+      "name": "Challenge 11-16",
+      "source": "DMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "hoard",
+      "name": "Challenge 17+",
+      "source": "DMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "hoard",
+      "name": "Challenge 0-4",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "hoard",
+      "name": "Challenge 5-10",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "hoard",
+      "name": "Challenge 11-16",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "hoard",
+      "name": "Challenge 17+",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "A",
+      "source": "DMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "B",
+      "source": "DMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "C",
+      "source": "DMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "D",
+      "source": "DMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "E",
+      "source": "DMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "F",
+      "source": "DMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "G",
+      "source": "DMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "H",
+      "source": "DMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "I",
+      "source": "DMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "arcana.common",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "arcana.uncommon",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "arcana.rare",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "arcana.very rare",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "arcana.legendary",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "armaments.common",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "armaments.uncommon",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "armaments.rare",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "armaments.very rare",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "armaments.legendary",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "implements.common",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "implements.uncommon",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "implements.rare",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "implements.very rare",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "implements.legendary",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "relics.common",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "relics.uncommon",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "relics.rare",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "relics.very rare",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "relics.legendary",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "byLevel.1-4",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "byLevel.5-10",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "byLevel.11-16",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    },
+    {
+      "mode": "magic",
+      "name": "byLevel.17-20",
+      "source": "XDMG",
+      "missing": [],
+      "overlap": []
+    }
+  ],
+  "genericTables": [],
+  "summary": {
+    "genericTableCount": 13,
+    "tablesWithGaps": 0,
+    "tablesWithOverlap": 0
+  }
+}
