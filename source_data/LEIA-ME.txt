@@ -1,0 +1,3 @@
+Nao coloque esta pasta dentro do RPK.
+Use uma copia local autorizada da pasta data do 5etools como entrada do importar.bat.
+O importador nao baixa arquivos e sobrescreve data/index.lua e data/entries.lua.
